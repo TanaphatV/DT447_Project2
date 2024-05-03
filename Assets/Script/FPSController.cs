@@ -15,9 +15,11 @@ public class FPSController : MonoBehaviour
     private bool isGrounded;
 
     public bool talking;
+    ChatGUIController chatController;
 
     void Start()
     {
+        chatController = FindObjectOfType<ChatGUIController>();
         controller = GetComponent<CharacterController>();
         playerCamera = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,6 +27,9 @@ public class FPSController : MonoBehaviour
 
     void Update()
     {
+        if (chatController.chatting)
+            return;
+
         if(!talking)
             Movement();
     }

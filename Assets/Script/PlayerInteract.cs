@@ -14,16 +14,20 @@ public class PlayerInteract : MonoBehaviour
     bool inTraderRange = false;
     public GameObject NightVision;
     public GameObject FlashLight;
-
+    ChatGUIController chatController;
     // Start is called before the first frame update
     void Start()
     {
+        chatController = FindObjectOfType<ChatGUIController>();
         totalCollectible = FindObjectsOfType(typeof(Collectible)).Length;
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        if (chatController.chatting)
+            return;
+
         Collider[] cols = Physics.OverlapSphere(transform.position, 3.0f);
         foreach (var col in cols)
         {
