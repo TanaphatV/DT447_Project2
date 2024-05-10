@@ -26,7 +26,7 @@ public class ChatGUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        InitChat(PlayerPrefs.GetString("name"), PlayerPrefs.GetString("ip"), 12000);
     }
 
     public void InitChat(string name,string ip,int port)
